@@ -1,0 +1,264 @@
+/* Reset e configurações globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #0d064b, #501226);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Container do quiz */
+.container {
+  width: 90%;
+  max-width: 500px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.question-container {
+  display: none;
+  padding: 20px;
+  text-align: center;
+}
+
+.question-container.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+.question-image {
+  width: 80%; /* Mantém responsivo */
+  max-width: 200px; /* Limite para não ficar grande */
+  height: auto; /* Mantém a proporção */
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.flower {
+  width: 100px; /* Reduzindo o tamanho */
+  opacity: 0;
+  animation: flowerRise 3s forwards;
+  position: relative;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 480px) {
+  .question-image {
+    width: 70%;
+    max-width: 150px; /* Reduzindo ainda mais para telas pequenas */
+  }
+  
+  .flower {
+    width: 80px; /* Menor ainda em telas menores */
+  }
+}
+
+
+.question-text {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-button {
+  padding: 15px;
+  background: #160029;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.option-button:hover {
+  background: #160029;
+  transform: scale(1.02);
+}
+
+.message {
+  margin-top: 10px;
+  font-size: 1em;
+  height: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tela final com animação */
+.final-screen {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffc1cc, #ffdee9);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.final-screen.active {
+  display: flex;
+  animation: fadeIn 1s ease;
+}
+
+.flower {
+  width: 150px;
+  opacity: 0;
+  animation: flowerRise 3s forwards;
+  position: relative;
+}
+
+@keyframes flowerRise {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-150px);
+  }
+}
+
+/* Estilo dos corações */
+.heart {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: red;
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: heartFloat 3s infinite;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -15px;
+  left: 0;
+}
+
+.heart:after {
+  left: 15px;
+  top: 0;
+}
+
+@keyframes heartFloat {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.5);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1);
+  }
+}
+
+.final-text {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.button-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.final-button {
+  padding: 15px 30px;
+  background: #ff6f91;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.final-button:hover {
+  background: #ff4e7c;
+  transform: scale(1.05);
+}
+
+/* Ajustando o tamanho do vídeo */
+.final-video {
+  width: 80%; /* Tamanho pequeno e ajustável */
+  max-width: 350px; /* Limite máximo do tamanho */
+  height: auto; /* Manter a proporção do vídeo */
+  margin-bottom: 20px; /* Espaço abaixo do vídeo */
+}
+
+/* Media Queries para Flexibilidade (sem modificar o código original) */
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+    max-width: 95%;
+  }
+  .question-text {
+    font-size: 1em;
+  }
+  .option-button {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+  .final-text {
+    font-size: 1.2em;
+  }
+  .final-button {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+  .flower {
+    width: 120px;
+  }
+  .final-video {
+    width: 90%; /* Ajustando para telas menores */
+    max-width: 300px; /* Limite máximo do vídeo em telas pequenas */
+  }
+}
+.video-text {
+  font-size: 1em;
+  color: #333;
+  text-align: center;
+  margin-top: 10px;
+}

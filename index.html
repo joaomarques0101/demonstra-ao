@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1 Ano e 1 Mês de Amor</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="Imagem do WhatsApp de 2025-02-14 à(s) 02.52.15_2eb25e25.jpg">
 </head>
 <body>
   <!-- Quiz container -->
   <div class="container" id="quiz">
     <!-- Pergunta 1 -->
     <div class="question-container active" id="question1">
-      <img src="nossa_foto1.jpg" alt="Nossa foto 1" class="question-image" />
+      <img src="Imagem do WhatsApp de 2025-02-14 à(s) 02.52.15_2eb25e25.jpg" alt="Nossa foto 1" class="question-image" />
       <div class="question-text">
         Quais são os seus nomes? Que são tão belos que apenas seu namorado pode te chamar por esses nomes?
       </div>
@@ -25,7 +26,7 @@
 
     <!-- Pergunta 2 -->
     <div class="question-container" id="question2">
-      <img src="nossa_foto2.jpg" alt="Nossa foto 2" class="question-image" />
+      <img src="Imagem do WhatsApp de 2025-02-14 à(s) 02.52.15_e71d18c8.jpg" alt="Nossa foto 2" class="question-image" />
       <div class="question-text">
         Onde nos conhecemos pelas primira vez? Que depois que nos se conhecemos sabemos que era uma paixão intesa que se tranformaria em amor e vamos casar ter varios animas conquista tudo juntos e ter dois filho? como descobrimos que nos amamos tanto?
       </div>
@@ -39,7 +40,7 @@
 
     <!-- Pergunta 3 -->
     <div class="question-container" id="question3">
-      <img src="nossa_foto3.jpg" alt="Nossa foto 3" class="question-image" />
+      <img src="Imagem do WhatsApp de 2025-02-14 à(s) 02.52.16_88875e4a.jpg" alt="Nossa foto 3" class="question-image" />
       <div class="question-text">
         Qual foi o presente mais marcante que você já me deu?
       </div>
@@ -55,7 +56,14 @@
 <!-- Tela final com animação -->
 <div class="final-screen" id="finalScreen">
   <div class="final-text">Assista este vídeo até o final:</div>
-  <video class="final-video" src="demostração.mp4" autoplay playsinline controls></video>
+  <video class="final-video" src="0214 (3).mp4" autoplay playsinline controls></video>
+  <p class="video-text">Amor eu te amo do meu coração, obrigado por ser essa pessoa incrivel. quero dizer que te amo muito muito muito muito.</p>
+  
+  <!-- Botão que leva para outra página (aparece somente aqui) -->
+  <div class="button-container">
+    <button class="final-button" onclick="location.href='.html';">click para pegar sua flor meu amor🥺❤</button>
+  </div>
+  
   <!-- Corações flutuantes -->
   <div class="heart" style="left: 20%; animation-delay: 0s;"></div>
   <div class="heart" style="left: 40%; animation-delay: 0.5s;"></div>
@@ -63,9 +71,13 @@
   <div class="heart" style="left: 80%; animation-delay: 1.5s;"></div>
 </div>
 
-
-
   <script>
+    window.onload = function() {
+      var video = document.getElementById("final-video");
+      if (!video.canPlayType) {
+          window.location.href = "0214 (3).mp4"; // Força o download/abertura do vídeo
+      }
+  };
     // Array com os identificadores das perguntas e mensagens
     const questions = [
       { id: "question1", messageId: "message1" },
