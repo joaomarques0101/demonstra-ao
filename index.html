@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1 Ano e 1 Mês de Amor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Quiz container -->
+  <div class="container" id="quiz">
+    <!-- Pergunta 1 -->
+    <div class="question-container active" id="question1">
+      <img src="nossa_foto1.jpg" alt="Nossa foto 1" class="question-image" />
+      <div class="question-text">
+        Quais são os seus nomes? Que são tão belos que apenas seu namorado pode te chamar por esses nomes?
+      </div>
+      <div class="options">
+        <button class="option-button" data-correct="false">Jamili</button>
+        <button class="option-button" data-correct="true">Momora, Gata, Perfeita, Amor da minha vida, Amor, Minha menina, boneca linda, minha pessoa. Te amo, bebe, Bê</button>
+        <button class="option-button" data-correct="false">Mili</button>
+      </div>
+      <div class="message" id="message1"></div>
+    </div>
+
+    <!-- Pergunta 2 -->
+    <div class="question-container" id="question2">
+      <img src="nossa_foto2.jpg" alt="Nossa foto 2" class="question-image" />
+      <div class="question-text">
+        Onde nos conhecemos pelas primira vez? Que depois que nos se conhecemos sabemos que era uma paixão intesa que se tranformaria em amor e vamos casar ter varios animas conquista tudo juntos e ter dois filho? como descobrimos que nos amamos tanto?
+      </div>
+      <div class="options">
+        <button class="option-button" data-correct="false">Parque de diverção</button>
+        <button class="option-button" data-correct="true">Na Ativa, escola de treinamentos, onde tinha uma menina que era perfeita e me conquistou</button>
+        <button class="option-button" data-correct="false">No CAPS</button>
+      </div>
+      <div class="message" id="message2"></div>
+    </div>
+
+    <!-- Pergunta 3 -->
+    <div class="question-container" id="question3">
+      <img src="nossa_foto3.jpg" alt="Nossa foto 3" class="question-image" />
+      <div class="question-text">
+        Qual foi o presente mais marcante que você já me deu?
+      </div>
+      <div class="options">
+        <button class="option-button" data-correct="false">Um buquê de flores</button>
+        <button class="option-button" data-correct="true">Um anel</button>
+        <button class="option-button" data-correct="false">Uma carta</button>
+      </div>
+      <div class="message" id="message3"></div>
+    </div>
+  </div>
+
+<!-- Tela final com animação -->
+<div class="final-screen" id="finalScreen">
+  <div class="final-text">Assista este vídeo até o final:</div>
+  <video class="final-video" src="demostração.mp4" autoplay playsinline controls></video>
+  <!-- Corações flutuantes -->
+  <div class="heart" style="left: 20%; animation-delay: 0s;"></div>
+  <div class="heart" style="left: 40%; animation-delay: 0.5s;"></div>
+  <div class="heart" style="left: 60%; animation-delay: 1s;"></div>
+  <div class="heart" style="left: 80%; animation-delay: 1.5s;"></div>
+</div>
+
+
+
+  <script>
+    // Array com os identificadores das perguntas e mensagens
+    const questions = [
+      { id: "question1", messageId: "message1" },
+      { id: "question2", messageId: "message2" },
+      { id: "question3", messageId: "message3" }
+    ];
+    let currentQuestion = 0;
+
+    // Função para mostrar a pergunta com base no índice
+    function showQuestion(index) {
+      document.querySelectorAll(".question-container").forEach(q => q.classList.remove("active"));
+      const questionEl = document.getElementById(questions[index].id);
+      if (questionEl) {
+        questionEl.classList.add("active");
+      }
+    }
+
+    // Adiciona os eventos de clique para os botões de opção
+    document.querySelectorAll(".option-button").forEach(button => {
+      button.addEventListener("click", function () {
+        const isCorrect = this.getAttribute("data-correct") === "true";
+        const messageEl = document.getElementById(questions[currentQuestion].messageId);
+
+        if (isCorrect) {
+          messageEl.style.color = "green";
+          messageEl.textContent = "Acertou! Seguimos...";
+          // Após 1 segundo, avança para a próxima pergunta ou mostra a tela final
+          setTimeout(() => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+              showQuestion(currentQuestion);
+            } else {
+              // Exibe a animação final
+              document.getElementById("quiz").style.display = "none";
+              document.getElementById("finalScreen").classList.add("active");
+            }
+          }, 1000);
+        } else {
+          messageEl.style.color = "red";
+          messageEl.textContent = "Resposta incorreta! Tente novamente.";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
